@@ -11,6 +11,40 @@ body {
 
 body {
   background-color: #fff;
-  color: #333;
+  color: #000;
   line-height: 1.6;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* ライトモード時のテキスト色を強制的に黒に */
+html:not([data-theme="dark"]) body,
+html:not([data-theme="dark"]) body * {
+  color: #000 !important;
+}
+
+/* ダークモード */
+[data-theme="dark"] body {
+  background-color: #1a1a1a;
+  color: #e5e5e5;
+}
+
+[data-theme="dark"] body,
+[data-theme="dark"] body * {
+  color: #e5e5e5 !important;
+}
+
+/* Tailwindのダークモード設定 */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+  }
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+/* ライトモード時のボタンホバー色（ほんの少しだけ灰色を足した白） */
+html:not([data-theme="dark"]) a[class*="border"]:hover {
+  background-color: #f8f8f8 !important;
 }

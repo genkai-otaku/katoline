@@ -9,17 +9,17 @@ import PagesLinks from '../components/pages-link.astro';
     <div class="max-w-2xl mx-auto">
       <!-- プロフィール写真 -->
       <div class="flex justify-center mb-6">
-        <div class="w-70 h-70 rounded-full bg-gray-200 flex items-center justify-center overflow-hidden">
+        <div class="w-70 h-70 rounded-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center overflow-hidden">
           <img 
             src="/icon-head.webp" 
             alt="Tonosakiのプロフィール写真" 
             class="w-full h-full object-cover"
-            onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-gray-400 text-4xl\'>🐱</span>'"
+            onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-gray-600 dark:text-gray-400 text-4xl\'>🐱</span>'"
           />
         </div>
       </div>
 
-      <h1 class="text-3xl font-bold text-center mb-8">@tonosaki</h1>
+      <h1 class="text-3xl font-bold text-center mb-8 text-black dark:text-gray-100">@tonosaki</h1>
 
       <!-- Links セクション -->
       <SnsLinks />
@@ -27,7 +27,7 @@ import PagesLinks from '../components/pages-link.astro';
       <!-- Pages セクション -->
       <PagesLinks />
 
-      <footer class="text-center text-sm text-gray-500 mt-12">
+      <footer class="text-center text-sm text-black dark:text-gray-400 mt-12">
         <p>© 2025 tonosaki</p>
       </footer>
     </div>
