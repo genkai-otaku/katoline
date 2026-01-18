@@ -1,46 +1,63 @@
-# Astro Starter Kit: Basics
+# katoline
 
-```sh
-pnpm create astro@latest -- --template basics
+Astro + TailwindCSS で構築されたシンプルでモダンなプロフィールサイトです。
+
+## ✨ 特徴
+
+- 🎨 **ライト/ダークモード対応** - テーマ切り替え機能付き
+- 📱 **レスポンシブデザイン** - モバイル・タブレット・デスクトップに対応
+- ⚡ **高速なパフォーマンス** - Astro の静的サイト生成による最適化
+- 🎯 **シンプルな構成** - 必要最小限の機能で軽量
+
+## 🚀 セットアップ
+
+### インストール
+
+```bash
+# 依存関係のインストール
+pnpm install
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+### 開発サーバーの起動
 
-## 🚀 Project Structure
+```bash
+# 開発サーバーを起動（デフォルト: http://localhost:4321）
+pnpm dev
+```
 
-Inside of your Astro project, you'll see the following folders and files:
+### ビルド
 
-```text
+```bash
+# 本番用ビルド
+pnpm build
+
+# ビルド結果のプレビュー
+pnpm preview
+```
+
+## 📁 プロジェクト構造
+
+```
 /
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
+├── public/              # 静的ファイル（画像、アイコンなど）
+│   └── icon-head.webp
+├── src/
+│   ├── components/     # Astroコンポーネント
+│   │   ├── pages-link.astro
+│   │   ├── sns-link.astro
+│   │   └── ThemeToggle.astro
+│   ├── layouts/        # レイアウトコンポーネント
+│   │   └── Layout.astro
+│   ├── pages/         # ページファイル
+│   │   └── index.astro
+│   └── styles/        # グローバルスタイル
+│       └── global.css
+├── astro.config.mjs   # Astro設定ファイル
+├── tailwind.config.mjs # TailwindCSS設定ファイル
 └── package.json
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## 🛠️ 使用技術
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- [Astro](https://astro.build/) - 静的サイトジェネレーター
+- [TailwindCSS](https://tailwindcss.com/) - ユーティリティファーストの CSS フレームワーク
