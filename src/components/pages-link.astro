@@ -1,0 +1,36 @@
+---
+interface PagesLinkItem {
+  name: string;
+  url: string;
+}
+
+const pagesLinks: PagesLinkItem[] = [
+  {
+    name: "今期視聴アニメ",
+    url: "/current-anime",
+  },
+  {
+    name: "生息地",
+    url: "/habitats",
+  },
+  {
+    name: "お問い合わせ",
+    url: "/contact",
+  },
+];
+---
+
+<section class="mb-12 text-center">
+  <h2 class="text-xl font-semibold mb-4">Pages</h2>
+  <div class="flex flex-col gap-3 items-center">
+    {pagesLinks.map((link) => (
+      <a
+        href={link.url}
+        class="flex items-center justify-center gap-2 px-4 py-2 w-full max-w-xs border border-gray-300 rounded-md text-black hover:bg-gray-100 transition-colors"
+      >
+        {link.name} →
+      </a>
+    ))}
+  </div>
+</section>
+

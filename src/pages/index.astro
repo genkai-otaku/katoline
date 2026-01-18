@@ -1,10 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import SnsLinks from '../components/sns-link.astro';
+import PagesLinks from '../components/pages-link.astro';
 ---
 
 <Layout>
-  <main class="min-h-screen pt-16 pb-4 px-4">
+  <main class="min-h-screen pt-16 pb-2 px-4">
     <div class="max-w-2xl mx-auto">
       <!-- プロフィール写真 -->
       <div class="flex justify-center mb-6">
@@ -18,54 +19,16 @@ import SnsLinks from '../components/sns-link.astro';
         </div>
       </div>
 
-      <!-- タイトル -->
       <h1 class="text-3xl font-bold text-center mb-8">@tonosaki</h1>
 
       <!-- Links セクション -->
       <SnsLinks />
 
       <!-- Pages セクション -->
-      <section class="mb-12 text-center">
-        <h2 class="text-xl font-semibold mb-4">Pages</h2>
-        <ul class="space-y-3">
-          <li>
-            <a href="/current-anime" class="text-black hover:underline">
-              今期視聴アニメ →
-            </a>
-          </li>
-          <li>
-            <a href="/habitats" class="text-black hover:underline">
-              生息地 →
-            </a>
-          </li>
-          <li>
-            <a href="/contact" class="text-black hover:underline">
-              お問い合わせ →
-            </a>
-          </li>
-        </ul>
-      </section>
+      <PagesLinks />
 
-      <!-- Tools セクション -->
-      <section class="mb-12 text-center">
-        <h2 class="text-xl font-semibold mb-4">Tools</h2>
-        <ul class="space-y-3">
-          <li>
-            <a href="/tools/profile-card" class="text-black hover:underline">
-              プロフィールカード →
-            </a>
-          </li>
-          <li>
-            <a href="/tools/text-diff" class="text-black hover:underline">
-              テキスト差分 →
-            </a>
-          </li>
-        </ul>
-      </section>
-
-      <!-- フッター -->
       <footer class="text-center text-sm text-gray-500 mt-12">
-        <p>© 2025 @tonosaki</p>
+        <p>© 2025 tonosaki</p>
       </footer>
     </div>
   </main>
