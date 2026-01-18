@@ -2,7 +2,7 @@
 // react-iconsのSVGパスを使用（サーバーサイドレンダリング）
 // クライアントJS不要でパフォーマンス最適
 
-interface LinkItem {
+interface SnsLinkItem {
   name: string;
   url: string;
   iconPath?: string;
@@ -12,7 +12,7 @@ interface LinkItem {
 
 // react-iconsのアイコンからSVGパスを取得
 // これらはreact-iconsのソースから取得した実際のSVGパス
-const links: LinkItem[] = [
+const snsLinks: SnsLinkItem[] = [
   {
     name: "X",
     url: "https://x.com/tonosaki914",
@@ -40,7 +40,7 @@ const links: LinkItem[] = [
 <section class="mb-12 text-center">
   <h2 class="text-xl font-semibold mb-4">Links</h2>
   <div class="flex flex-wrap gap-3 justify-center">
-    {links.map((link) => (
+    {snsLinks.map((link) => (
       <a
         href={link.url}
         target="_blank"
