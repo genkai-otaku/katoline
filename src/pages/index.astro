@@ -4,13 +4,13 @@ import Links from '../components/Links.astro';
 ---
 
 <Layout>
-  <main class="min-h-screen py-8 px-4">
+  <main class="min-h-screen pt-16 pb-4 px-4">
     <div class="max-w-2xl mx-auto">
       <!-- プロフィール写真 -->
       <div class="flex justify-center mb-6">
-        <div class="w-32 h-32 rounded-full bg-gray-200 flex items-center justify-center overflow-hidden">
+        <div class="w-70 h-70 rounded-full bg-gray-200 flex items-center justify-center overflow-hidden">
           <img 
-            src="/profile.jpg" 
+            src="/icon-head.webp" 
             alt="Tonosakiのプロフィール写真" 
             class="w-full h-full object-cover"
             onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-gray-400 text-4xl\'>🐱</span>'"
@@ -21,11 +21,6 @@ import Links from '../components/Links.astro';
       <!-- タイトル -->
       <h1 class="text-3xl font-bold text-center mb-8">@tonosaki</h1>
 
-      <!-- お問い合わせ情報 -->
-      <div class="text-center mb-12 text-sm text-gray-600">
-        <p class="mb-2">お問い合わせは X の DM まで。</p>
-      </div>
-
       <!-- Links セクション -->
       <Links />
 
@@ -34,8 +29,18 @@ import Links from '../components/Links.astro';
         <h2 class="text-xl font-semibold mb-4">Pages</h2>
         <ul class="space-y-3">
           <li>
-            <a href="/favorite-shops" class="text-black hover:underline">
-              よく行くお店 →
+            <a href="/current-anime" class="text-black hover:underline">
+              今期視聴アニメ →
+            </a>
+          </li>
+          <li>
+            <a href="/habitats" class="text-black hover:underline">
+              生息地 →
+            </a>
+          </li>
+          <li>
+            <a href="/contact" class="text-black hover:underline">
+              お問い合わせ →
             </a>
           </li>
         </ul>
