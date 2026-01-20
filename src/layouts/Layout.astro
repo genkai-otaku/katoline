@@ -1,6 +1,13 @@
 ---
 import '../styles/global.css';
 import ThemeToggle from '../components/ThemeToggle.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = '@tonosaki', description = '@tonosakiの個人サイトです。' } = Astro.props;
 ---
 
 <!doctype html>
@@ -10,10 +17,11 @@ import ThemeToggle from '../components/ThemeToggle.astro';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/webp" href="/icon-head.webp" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
-    <title>@tonosaki</title>
+    <title>{title}</title>
     <!-- テーマの初期化（FOUCを防ぐためhead内で先に実行） -->
     <script is:inline>
       (function() {
