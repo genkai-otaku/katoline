@@ -1,0 +1,30 @@
+---
+interface Props {
+  level?: 2 | 3;
+  text: string;
+  withDivider?: boolean;
+  class?: string;
+}
+
+const {
+  level = 2,
+  text,
+  withDivider = false,
+  class: extraClass = '',
+} = Astro.props as Props;
+
+const Tag = level === 2 ? 'h2' : 'h3';
+const baseClass =
+  level === 2
+    ? 'text-2xl font-semibold text-black dark:text-gray-100'
+    : 'text-lg font-semibold text-gray-800 dark:text-gray-100';
+---
+
+<>
+  <Tag class={`${baseClass} ${extraClass}`}>{text}</Tag>
+  {withDivider && (
+    <div class="h-px bg-gray-200 dark:bg-gray-700 mb-4"></div>
+  )}
+</>
+
+
