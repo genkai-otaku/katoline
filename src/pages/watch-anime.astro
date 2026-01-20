@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ListPageLayout from '../components/ListPageLayout.astro';
+import PlacesSection, {
+  type Place,
+} from '../components/PlacesSection.astro';
+
+// 今期視聴アニメのリスト
+// 例:
+// { label: 'アニメタイトル', href: 'https://example.com' }
+const thisSeasonAnimes: Place[] = [
+  { label: '呪術廻戦', href: 'https://jujutsukaisen.jp/' },
+  { label: 'ヴィジランテ -僕のヒーローアカデミア ILLEGALS-', href: 'https://vigilante-anime.com/' },
+  { label: '葬送のフリーレン', href: 'https://frieren-anime.jp/' },
+  { label: 'メダリスト', href: 'https://medalist-pr.com/' },
+  { label: '【推しの子】', href: 'https://ichigoproduction.com/' },
+  { label: '貴族転生 〜恵まれた生まれから最強の力を得る〜', href: 'https://kizoku-tensei.com/' },
+  { label: '「お前ごときが魔王に勝てると思うな」と勇者パーティを追放されたので、王都で気ままに暮らしたい', href: 'https://omagoto.com/' },
+  { label: '正反対な君と僕', href: 'https://sh-anime.shochiku.co.jp/seihantai_anime/' },
+  { label: '勇者パーティを追い出された器用貧乏 〜パーティ事情で付与術士をやっていた剣士、万能へと至る〜', href: 'https://kiyou-bimbou.com/' },
+  { label: '勇者パーティーにかわいい子がいたので、告白してみた。', href: 'https://yuukawa-anime.com/' },
+  { label: '真夜中ハートチューン', href: 'https://mayochu-anime.com/' },
+  { label: '魔王の娘は優しすぎる!!', href: 'https://maomusu.com/' },
+  { label: '勇者刑に処す 懲罰勇者9004隊刑務記録', href: 'https://yushakei-pj.com/' },
+  { label: '死亡遊戯で飯を食う。', href: 'https://shiboyugi-anime.com/' },
+  { label: '綺麗にしてもらえますか。', href: 'https://kinishite.com/' },
+  { label: '東島丹三郎は仮面ライダーになりたい', href: 'https://tojima-rider.com/' },
+  { label: '炎炎ノ消防隊', href: 'https://fireforce-anime.jp/' },
+  { label: '幼馴染とはラブコメにならない', href: 'https://anime-osalove.com/' },
+];
+
+const animeAreas: { id: string; title?: string; places: Place[] }[] = [
+  {
+    id: 'this-season',
+    places: thisSeasonAnimes,
+  },
+];
+---
+
+<Layout>
+  <ListPageLayout
+    title="今期視聴アニメ"
+    backHref="/"
+    backLabel="← ホームに戻る"
+    description="今期視聴しているアニメのメモです。タイトルをクリックすると各作品の公式サイトなどに飛べるようにしておきます。"
+  >
+    <PlacesSection
+      sectionId="this-season-anime-heading"
+      title="今期視聴アニメ一覧"
+      class="mt-10 mb-10"
+      areas={animeAreas}
+    />
+  </ListPageLayout>
+</Layout>
+
+
