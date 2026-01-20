@@ -3,60 +3,170 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
-  <main class="min-h-screen pt-16 pb-8 px-4">
-    <div class="max-w-2xl mx-auto">
-      <h1 class="text-3xl font-bold text-center mb-6 text-black dark:text-gray-100">生息地</h1>
+  <main class="min-h-screen pt-16 pb-12 px-4">
+    <div class="max-w-3xl mx-auto">
+      <a href="/" class="inline-block mb-4 text-sm text-gray-600 dark:text-gray-400 hover:underline">
+        ← プロフィールに戻る
+      </a>
 
-      <div class="space-y-8">
-        <!-- よくいる場所 -->
-        <section>
-          <h2 class="text-2xl font-semibold mb-3 text-black dark:text-gray-100">よくいる場所</h2>
-          <ul class="list-disc ml-6 space-y-1">
-            <li class="text-gray-700 dark:text-gray-300">松戸ネットカフェ（ダーツ）</li>
-            <li class="text-gray-700 dark:text-gray-300">新松戸大庄水産（居酒屋）</li>
-            <li class="text-gray-700 dark:text-gray-300">松屋（南柏）</li>
-          </ul>
-        </section>
+      <h1 class="text-3xl font-bold mb-4 text-black dark:text-gray-100">生息地</h1>
 
-        <!-- よく行くお店 -->
-        <section>
-          <h2 class="text-2xl font-semibold mb-4 text-black dark:text-gray-100">よく行くお店</h2>
-
-          <div class="space-y-6">
-            <!-- 東京 -->
-            <div>
-              <h3 class="text-xl font-medium mb-2 text-black dark:text-gray-100">東京</h3>
-              <ul class="list-disc ml-6 space-y-1">
-                <li class="text-gray-700 dark:text-gray-300">ラーメン鴨と葱（上野）</li>
-                <li class="text-gray-700 dark:text-gray-300">あおもりや（池袋）</li>
-                <li class="text-gray-700 dark:text-gray-300">ラーメン二郎 新宿小瀧通り店</li>
-              </ul>
-            </div>
-
-            <!-- 千葉 -->
-            <div>
-              <h3 class="text-xl font-medium mb-2 text-black dark:text-gray-100">千葉</h3>
-              <ul class="list-disc ml-6 space-y-1">
-                <li class="text-gray-700 dark:text-gray-300">ラーメン かいざん（西船橋）</li>
-                <li class="text-gray-700 dark:text-gray-300">王道家（柏）</li>
-                <li class="text-gray-700 dark:text-gray-300">なりたけ（本八幡）</li>
-                <li class="text-gray-700 dark:text-gray-300">一心（新松戸）</li>
-              </ul>
-            </div>
-
-            <!-- 青森 -->
-            <div>
-              <h3 class="text-xl font-medium mb-2 text-black dark:text-gray-100">青森</h3>
-              <ul class="list-disc ml-6 space-y-1">
-                <li class="text-gray-700 dark:text-gray-300">そば処味新（弘前）</li>
-                <li class="text-gray-700 dark:text-gray-300">中華そばたかはし（弘前）</li>
-                <li class="text-gray-700 dark:text-gray-300">野呂家（弘前）</li>
-                <li class="text-gray-700 dark:text-gray-300">ラーメンあさり（青森）</li>
-              </ul>
-            </div>
-          </div>
-        </section>
+      <div class="mb-8 space-y-2 text-sm text-gray-700 dark:text-gray-300">
+        <p>よくいる場所と、よく行くお店のメモです。どこかで遭遇したらよろしくお願いします。</p>
       </div>
+
+      <!-- よくいる場所 -->
+      <h2 class="text-2xl font-semibold mt-10 mb-2 text-black dark:text-gray-100">よくいる場所</h2>
+      <div class="h-px bg-gray-200 dark:bg-gray-700 mb-4"></div>
+      <ul class="space-y-3 mb-10">
+        <li>
+          <a
+            href="#"
+            class="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-800"
+          >
+            <span>松戸ネットカフェ（ダーツ）</span>
+            <span class="text-gray-400 text-sm">↗</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            class="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-800"
+          >
+            <span>新松戸大庄水産（居酒屋）</span>
+            <span class="text-gray-400 text-sm">↗</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            class="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-800"
+          >
+            <span>松屋（南柏）</span>
+            <span class="text-gray-400 text-sm">↗</span>
+          </a>
+        </li>
+      </ul>
+
+      <!-- よく行くお店 -->
+      <h2 class="text-2xl font-semibold mt-4 mb-4 text-black dark:text-gray-100">よく行くお店</h2>
+
+      <!-- 東京 -->
+      <h3 class="text-lg font-semibold mb-2 text-gray-800 dark:text-gray-100">東京</h3>
+      <div class="h-px bg-gray-200 dark:bg-gray-700 mb-3"></div>
+      <ul class="space-y-3 mb-8">
+        <li>
+          <a
+            href="#"
+            class="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-800"
+          >
+            <span>ラーメン鴨と葱（上野）</span>
+            <span class="text-gray-400 text-sm">↗</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            class="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-800"
+          >
+            <span>あおもりや（池袋）</span>
+            <span class="text-gray-400 text-sm">↗</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            class="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-800"
+          >
+            <span>ラーメン二郎 新宿小瀧通り店</span>
+            <span class="text-gray-400 text-sm">↗</span>
+          </a>
+        </li>
+      </ul>
+
+      <!-- 千葉 -->
+      <h3 class="text-lg font-semibold mb-2 text-gray-800 dark:text-gray-100">千葉</h3>
+      <div class="h-px bg-gray-200 dark:bg-gray-700 mb-3"></div>
+      <ul class="space-y-3 mb-8">
+        <li>
+          <a
+            href="#"
+            class="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-800"
+          >
+            <span>ラーメン かいざん（西船橋）</span>
+            <span class="text-gray-400 text-sm">↗</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            class="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-800"
+          >
+            <span>王道家（柏）</span>
+            <span class="text-gray-400 text-sm">↗</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            class="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-800"
+          >
+            <span>なりたけ（本八幡）</span>
+            <span class="text-gray-400 text-sm">↗</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            class="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-800"
+          >
+            <span>一心（新松戸）</span>
+            <span class="text-gray-400 text-sm">↗</span>
+          </a>
+        </li>
+      </ul>
+
+      <!-- 青森 -->
+      <h3 class="text-lg font-semibold mb-2 text-gray-800 dark:text-gray-100">青森</h3>
+      <div class="h-px bg-gray-200 dark:bg-gray-700 mb-3"></div>
+      <ul class="space-y-3">
+        <li>
+          <a
+            href="#"
+            class="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-800"
+          >
+            <span>そば処味新（弘前）</span>
+            <span class="text-gray-400 text-sm">↗</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            class="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-800"
+          >
+            <span>中華そばたかはし（弘前）</span>
+            <span class="text-gray-400 text-sm">↗</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            class="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-800"
+          >
+            <span>野呂家（弘前）</span>
+            <span class="text-gray-400 text-sm">↗</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            class="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-800"
+          >
+            <span>ラーメンあさり（青森）</span>
+            <span class="text-gray-400 text-sm">↗</span>
+          </a>
+        </li>
+      </ul>
     </div>
   </main>
 </Layout>
