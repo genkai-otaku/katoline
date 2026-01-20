@@ -1,0 +1,62 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <main class="min-h-screen pt-16 pb-8 px-4">
+    <div class="max-w-2xl mx-auto">
+      <h1 class="text-3xl font-bold text-center mb-6 text-black dark:text-gray-100">生息地</h1>
+
+      <div class="space-y-8">
+        <!-- よくいる場所 -->
+        <section>
+          <h2 class="text-2xl font-semibold mb-3 text-black dark:text-gray-100">よくいる場所</h2>
+          <ul class="list-disc ml-6 space-y-1">
+            <li class="text-gray-700 dark:text-gray-300">松戸ネットカフェ（ダーツ）</li>
+            <li class="text-gray-700 dark:text-gray-300">新松戸大庄水産（居酒屋）</li>
+            <li class="text-gray-700 dark:text-gray-300">松屋（南柏）</li>
+          </ul>
+        </section>
+
+        <!-- よく行くお店 -->
+        <section>
+          <h2 class="text-2xl font-semibold mb-4 text-black dark:text-gray-100">よく行くお店</h2>
+
+          <div class="space-y-6">
+            <!-- 東京 -->
+            <div>
+              <h3 class="text-xl font-medium mb-2 text-black dark:text-gray-100">東京</h3>
+              <ul class="list-disc ml-6 space-y-1">
+                <li class="text-gray-700 dark:text-gray-300">ラーメン鴨と葱（上野）</li>
+                <li class="text-gray-700 dark:text-gray-300">あおもりや（池袋）</li>
+                <li class="text-gray-700 dark:text-gray-300">ラーメン二郎 新宿小瀧通り店</li>
+              </ul>
+            </div>
+
+            <!-- 千葉 -->
+            <div>
+              <h3 class="text-xl font-medium mb-2 text-black dark:text-gray-100">千葉</h3>
+              <ul class="list-disc ml-6 space-y-1">
+                <li class="text-gray-700 dark:text-gray-300">ラーメン かいざん（西船橋）</li>
+                <li class="text-gray-700 dark:text-gray-300">王道家（柏）</li>
+                <li class="text-gray-700 dark:text-gray-300">なりたけ（本八幡）</li>
+                <li class="text-gray-700 dark:text-gray-300">一心（新松戸）</li>
+              </ul>
+            </div>
+
+            <!-- 青森 -->
+            <div>
+              <h3 class="text-xl font-medium mb-2 text-black dark:text-gray-100">青森</h3>
+              <ul class="list-disc ml-6 space-y-1">
+                <li class="text-gray-700 dark:text-gray-300">そば処味新（弘前）</li>
+                <li class="text-gray-700 dark:text-gray-300">中華そばたかはし（弘前）</li>
+                <li class="text-gray-700 dark:text-gray-300">野呂家（弘前）</li>
+                <li class="text-gray-700 dark:text-gray-300">ラーメンあさり（青森）</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+</Layout>
