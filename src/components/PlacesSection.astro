@@ -1,0 +1,88 @@
+---
+import ListSectionTitle from './ListSectionTitle.astro';
+
+export type Place = {
+  label: string;
+  href?: string;
+};
+
+type Area = {
+  id: string;
+  title?: string;
+  places: Place[];
+};
+
+interface Props {
+  sectionId: string;
+  title: string;
+  areas: Area[];
+  class?: string;
+  withDivider?: boolean;
+}
+
+const {
+  sectionId,
+  title,
+  areas,
+  class: extraClass = '',
+  withDivider = true,
+} = Astro.props as Props;
+
+// サブエリア（h3見出し）を表示するかどうか
+const hasSubAreas = areas.length > 1 || Boolean(areas[0]?.title);
+---
+
+<section aria-labelledby={sectionId} class={extraClass}>
+  <ListSectionTitle
+    level={2}
+    text={title}
+    withDivider={withDivider}
+    class="mb-4"
+    id={sectionId}
+  />
+
+  {hasSubAreas ? (
+    areas.map((area) => (
+      <section
+        aria-labelledby={`area-${area.id}-heading`}
+        class="mb-8 last:mb-0"
+      >
+        {area.title && (
+          <h3
+            id={`area-${area.id}-heading`}
+            class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2"
+          >
+            {area.title}
+          </h3>
+        )}
+        <ul class="space-y-3">
+          {area.places.map((place) => (
+            <li>
+              <a
+                href={place.href ?? '#'}
+                class="flex items-center justify-between gap-2 px-4 py-2 w-full border border-gray-300 dark:border-gray-700 rounded-md text-black dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+              >
+                <span>{place.label}</span>
+                <span class="text-gray-400 text-sm">↗</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  ) : (
+    <ul class="space-y-3">
+      {areas[0].places.map((place) => (
+        <li>
+          <a
+            href={place.href ?? '#'}
+            class="flex items-center justify-between gap-2 px-4 py-2 w-full border border-gray-300 dark:border-gray-700 rounded-md text-black dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+          >
+            <span>{place.label}</span>
+            <span class="text-gray-400 text-sm">↗</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  )}
+</section>

@@ -1,8 +1,47 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ListPageLayout from '../components/ListPageLayout.astro';
-import ListCardLink from '../components/ListCardLink.astro';
-import ListSectionTitle from '../components/ListSectionTitle.astro';
+import PlacesSection, {
+  type Place,
+} from '../components/PlacesSection.astro';
+
+const frequentPlaces: Place[] = [
+  { label: '松戸ネットカフェ（ダーツ）' },
+  { label: '新松戸大庄水産（居酒屋）' },
+  { label: '松屋（南柏）' },
+];
+
+const shopAreas: { id: string; title: string; places: Place[] }[] = [
+  {
+    id: 'tokyo',
+    title: '東京',
+    places: [
+      { label: 'ラーメン鴨と葱（上野）' },
+      { label: 'あおもりや（池袋）' },
+      { label: 'ラーメン二郎 新宿小瀧通り店' },
+    ],
+  },
+  {
+    id: 'chiba',
+    title: '千葉',
+    places: [
+      { label: 'ラーメン かいざん（西船橋）' },
+      { label: '王道家（柏）' },
+      { label: 'なりたけ（本八幡）' },
+      { label: '一心（新松戸）' },
+    ],
+  },
+  {
+    id: 'aomori',
+    title: '青森',
+    places: [
+      { label: 'そば処味新（弘前）' },
+      { label: '中華そばたかはし（弘前）' },
+      { label: '野呂家（弘前）' },
+      { label: 'ラーメンあさり（青森）' },
+    ],
+  },
+];
 ---
 
 <Layout>
@@ -12,52 +51,25 @@ import ListSectionTitle from '../components/ListSectionTitle.astro';
     backLabel="← ホームに戻る"
     description="よくいる場所と、よく行くお店のメモです。どこかで遭遇したら飯でも奢ってやるよ。"
   >
-
     <!-- よくいる場所 -->
-    <ListSectionTitle
-      level={2}
-      text="よくいる場所"
-      withDivider={true}
-      class="mt-10 mb-2"
+    <PlacesSection
+      sectionId="frequent-places-heading"
+      title="よくいる場所"
+      class="mt-10 mb-10"
+      areas={[
+        {
+          id: 'frequent',
+          places: frequentPlaces,
+        },
+      ]}
     />
-    <ul class="space-y-3 mb-10">
-      <li><ListCardLink label="松戸ネットカフェ（ダーツ）" /></li>
-      <li><ListCardLink label="新松戸大庄水産（居酒屋）" /></li>
-      <li><ListCardLink label="松屋（南柏）" /></li>
-    </ul>
 
     <!-- よく行くお店 -->
-    <ListSectionTitle
-      level={2}
-      text="よく行くお店"
-      withDivider={true}
-      class="mt-4 mb-4"
+    <PlacesSection
+      sectionId="favorite-shops-heading"
+      title="よく行くお店"
+      class="mt-4"
+      areas={shopAreas}
     />
-
-    <!-- 東京 -->
-    <ListSectionTitle level={3} text="東京" class="mb-2" />
-    <ul class="space-y-3 mb-8">
-      <li><ListCardLink label="ラーメン鴨と葱（上野）" /></li>
-      <li><ListCardLink label="あおもりや（池袋）" /></li>
-      <li><ListCardLink label="ラーメン二郎 新宿小瀧通り店" /></li>
-    </ul>
-
-    <!-- 千葉 -->
-    <ListSectionTitle level={3} text="千葉" class="mb-2" />
-    <ul class="space-y-3 mb-8">
-      <li><ListCardLink label="ラーメン かいざん（西船橋）" /></li>
-      <li><ListCardLink label="王道家（柏）" /></li>
-      <li><ListCardLink label="なりたけ（本八幡）" /></li>
-      <li><ListCardLink label="一心（新松戸）" /></li>
-    </ul>
-
-    <!-- 青森 -->
-    <ListSectionTitle level={3} text="青森" class="mb-2" />
-    <ul class="space-y-3">
-      <li><ListCardLink label="そば処味新（弘前）" /></li>
-      <li><ListCardLink label="中華そばたかはし（弘前）" /></li>
-      <li><ListCardLink label="野呂家（弘前）" /></li>
-      <li><ListCardLink label="ラーメンあさり（青森）" /></li>
-    </ul>
   </ListPageLayout>
 </Layout>

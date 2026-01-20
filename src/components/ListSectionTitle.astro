@@ -4,6 +4,7 @@ interface Props {
   text: string;
   withDivider?: boolean;
   class?: string;
+  id?: string;
 }
 
 const {
@@ -11,6 +12,7 @@ const {
   text,
   withDivider = false,
   class: extraClass = '',
+  id,
 } = Astro.props as Props;
 
 const Tag = level === 2 ? 'h2' : 'h3';
@@ -21,7 +23,7 @@ const baseClass =
 ---
 
 <>
-  <Tag class={`${baseClass} ${extraClass}`}>{text}</Tag>
+  <Tag id={id} class={`${baseClass} ${extraClass}`}>{text}</Tag>
   {withDivider && (
     <div class="h-px bg-gray-200 dark:bg-gray-700 mb-4"></div>
   )}
