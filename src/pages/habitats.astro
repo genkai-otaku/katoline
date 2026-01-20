@@ -4,15 +4,15 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout>
   <main class="min-h-screen pt-16 pb-12 px-4">
-    <div class="max-w-3xl mx-auto">
+    <div class="max-w-xl mx-auto">
       <a href="/" class="inline-block mb-4 text-sm text-gray-600 dark:text-gray-400 hover:underline">
-        ← プロフィールに戻る
+        ← ホームに戻る
       </a>
 
       <h1 class="text-3xl font-bold mb-4 text-black dark:text-gray-100">生息地</h1>
 
       <div class="mb-8 space-y-2 text-sm text-gray-700 dark:text-gray-300">
-        <p>よくいる場所と、よく行くお店のメモです。どこかで遭遇したらよろしくお願いします。</p>
+        <p>よくいる場所と、よく行くお店のメモです。どこかで遭遇したら飯でも奢ってやるよ。</p>
       </div>
 
       <!-- よくいる場所 -->
@@ -22,7 +22,7 @@ import Layout from '../layouts/Layout.astro';
         <li>
           <a
             href="#"
-            class="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-800"
+            class="flex items-center justify-between gap-2 px-4 py-2 w-full border border-gray-300 dark:border-gray-700 rounded-md text-black dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
           >
             <span>松戸ネットカフェ（ダーツ）</span>
             <span class="text-gray-400 text-sm">↗</span>
@@ -31,7 +31,7 @@ import Layout from '../layouts/Layout.astro';
         <li>
           <a
             href="#"
-            class="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-800"
+            class="flex items-center justify-between gap-2 px-4 py-2 w-full border border-gray-300 dark:border-gray-700 rounded-md text-black dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
           >
             <span>新松戸大庄水産（居酒屋）</span>
             <span class="text-gray-400 text-sm">↗</span>
@@ -40,7 +40,7 @@ import Layout from '../layouts/Layout.astro';
         <li>
           <a
             href="#"
-            class="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-800"
+            class="flex items-center justify-between gap-2 px-4 py-2 w-full border border-gray-300 dark:border-gray-700 rounded-md text-black dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
           >
             <span>松屋（南柏）</span>
             <span class="text-gray-400 text-sm">↗</span>
@@ -51,14 +51,14 @@ import Layout from '../layouts/Layout.astro';
       <!-- よく行くお店 -->
       <h2 class="text-2xl font-semibold mt-4 mb-4 text-black dark:text-gray-100">よく行くお店</h2>
 
+      <div class="h-px bg-gray-200 dark:bg-gray-700 mb-4"></div>
       <!-- 東京 -->
       <h3 class="text-lg font-semibold mb-2 text-gray-800 dark:text-gray-100">東京</h3>
-      <div class="h-px bg-gray-200 dark:bg-gray-700 mb-3"></div>
       <ul class="space-y-3 mb-8">
         <li>
           <a
             href="#"
-            class="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-800"
+            class="flex items-center justify-between gap-2 px-4 py-2 w-full border border-gray-300 dark:border-gray-700 rounded-md text-black dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
           >
             <span>ラーメン鴨と葱（上野）</span>
             <span class="text-gray-400 text-sm">↗</span>
@@ -67,7 +67,7 @@ import Layout from '../layouts/Layout.astro';
         <li>
           <a
             href="#"
-            class="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-800"
+            class="flex items-center justify-between gap-2 px-4 py-2 w-full border border-gray-300 dark:border-gray-700 rounded-md text-black dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
           >
             <span>あおもりや（池袋）</span>
             <span class="text-gray-400 text-sm">↗</span>
@@ -76,7 +76,7 @@ import Layout from '../layouts/Layout.astro';
         <li>
           <a
             href="#"
-            class="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-800"
+            class="flex items-center justify-between gap-2 px-4 py-2 w-full border border-gray-300 dark:border-gray-700 rounded-md text-black dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
           >
             <span>ラーメン二郎 新宿小瀧通り店</span>
             <span class="text-gray-400 text-sm">↗</span>
@@ -86,12 +86,11 @@ import Layout from '../layouts/Layout.astro';
 
       <!-- 千葉 -->
       <h3 class="text-lg font-semibold mb-2 text-gray-800 dark:text-gray-100">千葉</h3>
-      <div class="h-px bg-gray-200 dark:bg-gray-700 mb-3"></div>
       <ul class="space-y-3 mb-8">
         <li>
           <a
             href="#"
-            class="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-800"
+            class="flex items-center justify-between gap-2 px-4 py-2 w-full border border-gray-300 dark:border-gray-700 rounded-md text-black dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
           >
             <span>ラーメン かいざん（西船橋）</span>
             <span class="text-gray-400 text-sm">↗</span>
@@ -100,7 +99,7 @@ import Layout from '../layouts/Layout.astro';
         <li>
           <a
             href="#"
-            class="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-800"
+            class="flex items-center justify-between gap-2 px-4 py-2 w-full border border-gray-300 dark:border-gray-700 rounded-md text-black dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
           >
             <span>王道家（柏）</span>
             <span class="text-gray-400 text-sm">↗</span>
@@ -109,7 +108,7 @@ import Layout from '../layouts/Layout.astro';
         <li>
           <a
             href="#"
-            class="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-800"
+            class="flex items-center justify-between gap-2 px-4 py-2 w-full border border-gray-300 dark:border-gray-700 rounded-md text-black dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
           >
             <span>なりたけ（本八幡）</span>
             <span class="text-gray-400 text-sm">↗</span>
@@ -118,7 +117,7 @@ import Layout from '../layouts/Layout.astro';
         <li>
           <a
             href="#"
-            class="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-800"
+            class="flex items-center justify-between gap-2 px-4 py-2 w-full border border-gray-300 dark:border-gray-700 rounded-md text-black dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
           >
             <span>一心（新松戸）</span>
             <span class="text-gray-400 text-sm">↗</span>
@@ -128,12 +127,11 @@ import Layout from '../layouts/Layout.astro';
 
       <!-- 青森 -->
       <h3 class="text-lg font-semibold mb-2 text-gray-800 dark:text-gray-100">青森</h3>
-      <div class="h-px bg-gray-200 dark:bg-gray-700 mb-3"></div>
       <ul class="space-y-3">
         <li>
           <a
             href="#"
-            class="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-800"
+            class="flex items-center justify-between gap-2 px-4 py-2 w-full max-w-xl border border-gray-300 dark:border-gray-700 rounded-md text-black dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
           >
             <span>そば処味新（弘前）</span>
             <span class="text-gray-400 text-sm">↗</span>
@@ -142,7 +140,7 @@ import Layout from '../layouts/Layout.astro';
         <li>
           <a
             href="#"
-            class="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-800"
+            class="flex items-center justify-between gap-2 px-4 py-2 w-full max-w-xl border border-gray-300 dark:border-gray-700 rounded-md text-black dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
           >
             <span>中華そばたかはし（弘前）</span>
             <span class="text-gray-400 text-sm">↗</span>
@@ -151,16 +149,16 @@ import Layout from '../layouts/Layout.astro';
         <li>
           <a
             href="#"
-            class="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-800"
+            class="flex items-center justify-between gap-2 px-4 py-2 w-full max-w-xl border border-gray-300 dark:border-gray-700 rounded-md text-black dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
           >
             <span>野呂家（弘前）</span>
             <span class="text-gray-400 text-sm">↗</span>
           </a>
         </li>
         <li>
-          <a
+            <a
             href="#"
-            class="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:hover:bg-gray-800"
+            class="flex items-center justify-between gap-2 px-4 py-2 w-full max-w-xl border border-gray-300 dark:border-gray-700 rounded-md text-black dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
           >
             <span>ラーメンあさり（青森）</span>
             <span class="text-gray-400 text-sm">↗</span>
