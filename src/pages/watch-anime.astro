@@ -28,13 +28,6 @@ const thisSeasonAnimes: Place[] = [
   { label: '炎炎ノ消防隊', href: 'https://fireforce-anime.jp/' },
   { label: '幼馴染とはラブコメにならない', href: 'https://anime-osalove.com/' },
 ];
-
-const animeAreas: { id: string; title?: string; places: Place[] }[] = [
-  {
-    id: 'this-season',
-    places: thisSeasonAnimes,
-  },
-];
 ---
 
 <Layout>
@@ -48,7 +41,14 @@ const animeAreas: { id: string; title?: string; places: Place[] }[] = [
       sectionId="this-season-anime-heading"
       title="今期視聴アニメ一覧"
       class="mt-10 mb-10"
-      areas={animeAreas}
+      areas={
+      [
+        {
+          id: '2026-winter-anime',
+          title: '2026年冬アニメ',
+          places: thisSeasonAnimes,
+        },
+      ]}
     />
   </ListPageLayout>
 </Layout>
