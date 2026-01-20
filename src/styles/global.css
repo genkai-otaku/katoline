@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@config "../../tailwind.config.mjs";
 
 html,
 body {
@@ -16,21 +17,15 @@ body {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* ライトモード時のテキスト色を強制的に黒に */
-html:not([data-theme="dark"]) body,
-html:not([data-theme="dark"]) body * {
-  color: #000 !important;
+/* ライトモード時のテキスト色 */
+html:not([data-theme="dark"]) body {
+  color: #000;
 }
 
 /* ダークモード */
 [data-theme="dark"] body {
   background-color: #1a1a1a;
   color: #e5e5e5;
-}
-
-[data-theme="dark"] body,
-[data-theme="dark"] body * {
-  color: #e5e5e5 !important;
 }
 
 /* Tailwindのダークモード設定 */
