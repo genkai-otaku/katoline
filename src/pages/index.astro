@@ -17,6 +17,10 @@ import PagesLinks from '../components/pages-link.astro';
             src="/icon-head.webp" 
             alt="Tonosakiのプロフィール写真" 
             class="w-full h-full object-cover"
+            fetchpriority="high"
+            loading="eager"
+            width="280"
+            height="280"
             onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-gray-600 dark:text-gray-400 text-4xl\'>🐱</span>'"
           />
         </div>
