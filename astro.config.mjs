@@ -7,11 +7,15 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   integrations: [react()],
   build: {
-    // CSSの最適化を有効化（小さなCSSを自動的にインライン化）
-    inlineStylesheets: "auto",
+    // CSSを常にインライン化してクリティカルパスから除外
+    inlineStylesheets: "always",
   },
   vite: {
     // @ts-ignore - Vite plugin type mismatch between Astro's Vite version and @tailwindcss/vite
     plugins: [tailwindcss()],
+    build: {
+      // CSSの圧縮を有効化（デフォルトで有効だが明示的に指定）
+      cssMinify: "esbuild",
+    },
   },
 });
