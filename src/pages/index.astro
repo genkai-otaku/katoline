@@ -21,6 +21,7 @@ import PagesLinks from '../components/pages-link.astro';
             loading="eager"
             width="280"
             height="280"
+            decoding="async"
             onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-gray-600 dark:text-gray-400 text-4xl\'>🐱</span>'"
           />
         </div>

@@ -21,6 +21,7 @@ const { title = '@tonosaki', description = '@tonosakiの個人サイトです。
     <!-- LCP画像の優先読み込み -->
     <link rel="preload" as="image" href="/icon-head.webp" fetchpriority="high" />
     <!-- Google Fontsの最適化（非ブロッキング読み込み、必要なウェイトのみ） -->
+    <!-- subsetパラメータは非推奨のため削除、フォントファイルサイズ削減は画像最適化と併せて実施 -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
