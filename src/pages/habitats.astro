@@ -5,10 +5,9 @@ import PlacesSection, {
   type Place,
 } from '../components/PlacesSection.astro';
 
-const frequentPlaces: Place[] = [
-  { label: '松戸ネットカフェ（ダーツ）' },
-  { label: '新松戸大庄水産（居酒屋）' },
-  { label: '松屋（南柏）' },
+const dartSpots: Place[] = [
+  { label: 'myroom（松戸）' },
+	{ label: '快活CLUB（松戸）' },
 ];
 
 const shopAreas: { id: string; title: string; places: Place[] }[] = [
@@ -29,6 +28,8 @@ const shopAreas: { id: string; title: string; places: Place[] }[] = [
       { label: '王道家（柏）' },
       { label: 'なりたけ（本八幡）' },
       { label: '一心（新松戸）' },
+      { label: '大庄水産（新松戸）' },
+      { label: '松屋（南柏）' },
     ],
   },
   {
@@ -53,21 +54,21 @@ const shopAreas: { id: string; title: string; places: Place[] }[] = [
   >
     <!-- よくいる場所 -->
     <PlacesSection
-      sectionId="frequent-places-heading"
-      title="よくいる場所"
+      sectionId="dart-spots-heading"
+      title="よくいるダーツスポット"
       class="mt-10 mb-10"
       areas={[
         {
-          id: 'frequent',
-          places: frequentPlaces,
+          id: 'dart-spots',
+          places: dartSpots,
         },
       ]}
     />
 
     <!-- よく行くお店 -->
     <PlacesSection
-      sectionId="favorite-shops-heading"
-      title="よく行くお店"
+      sectionId="food-shops-heading"
+      title="よく行く飲食店"
       class="mt-4"
       areas={shopAreas}
     />
