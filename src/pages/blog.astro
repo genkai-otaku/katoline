@@ -1,0 +1,57 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ListPageLayout from '../components/ListPageLayout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+type BlogEntry = CollectionEntry<'blog'>;
+
+const posts = (
+  await getCollection(
+    'blog',
+    (entry: BlogEntry) => !entry.data.draft,
+  )
+).sort((a: BlogEntry, b: BlogEntry) => {
+  const ad = a.data.date ? new Date(a.data.date) : new Date(0);
+  const bd = b.data.date ? new Date(b.data.date) : new Date(0);
+  return bd.getTime() - ad.getTime();
+});
+---
+
+<Layout
+  title="ブログ - @tonosaki"
+  description="テック記事やアニメ感想を書いています。"
+>
+  <ListPageLayout
+    title="ブログ"
+    backHref="/"
+    backLabel="← ホームに戻る"
+  >
+    {posts.length === 0 ? (
+      <p class="text-sm text-gray-600 dark:text-gray-400">
+        まだ記事がありません。
+      </p>
+    ) : (
+      <ul class="space-y-4 mt-6">
+        {posts.map((post: BlogEntry) => (
+          <li>
+            <a
+              href={`/blog/${post.slug}/`}
+              class="block rounded-lg border border-gray-200 dark:border-gray-700 px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+            >
+              <h2 class="text-base font-semibold text-black dark:text-gray-100">
+                {post.data.title}
+              </h2>
+              {post.data.date && (
+                <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                  {new Date(post.data.date).toLocaleDateString('ja-JP')}
+                </p>
+              )}
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
+  </ListPageLayout>
+</Layout>
+
+

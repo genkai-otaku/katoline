@@ -1,0 +1,57 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+type BlogEntry = CollectionEntry<'blog'>;
+
+export async function getStaticPaths() {
+  const posts = await getCollection(
+    'blog',
+    (entry: BlogEntry) => !entry.data.draft,
+  );
+
+  return posts.map((post: BlogEntry) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props as { post: BlogEntry };
+const { title, date } = post.data as {
+  title: string;
+  date?: string | Date;
+};
+
+const pageTitle = `${title} - @tonosaki`;
+
+const { Content } = await post.render();
+---
+
+<Layout title={pageTitle} description={post.data.title}>
+  <main class="min-h-screen pt-16 pb-12 px-4">
+    <div class="max-w-xl mx-auto">
+      <a
+        href="/blog"
+        class="inline-block mb-4 text-sm text-gray-600 dark:text-gray-400 hover:underline"
+      >
+        ← ブログ一覧に戻る
+      </a>
+
+      <h1 class="text-3xl font-bold mb-2 text-black dark:text-gray-100">
+        {title}
+      </h1>
+
+      {date && (
+        <p class="mb-6 text-xs text-gray-500 dark:text-gray-400">
+          {new Date(date).toLocaleDateString('ja-JP')}
+        </p>
+      )}
+
+      <article class="prose prose-sm dark:prose-invert max-w-none">
+        <Content />
+      </article>
+    </div>
+  </main>
+</Layout>
+
+
