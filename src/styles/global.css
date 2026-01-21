@@ -112,3 +112,21 @@ html:not([data-theme="dark"]) a[class*="border"]:hover {
   background-color: rgba(15, 23, 42, 1);
 }
 
+.prose a {
+  color: #2563eb; /* blue-600 */
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.prose a:hover {
+  color: #1d4ed8; /* blue-700 */
+}
+
+[data-theme="dark"] .prose a {
+  color: #60a5fa; /* blue-400 */
+}
+
+[data-theme="dark"] .prose a:hover {
+  color: #93c5fd; /* blue-300 */
+}
+
