@@ -1,13 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ListPageLayout from '../components/ListPageLayout.astro';
-
-// 今まで視聴したアニメのリスト
-const oldWatchAnimes = [
-  'ジョジョの奇妙な冒険',
-  '響け！ユーフォニアム',
-  'やはり俺の青春ラブコメはまちがっている。',
-]
+import { OldWatchAnimes } from '../lib/anime-list';
 ---
 
 <Layout 
@@ -21,7 +15,7 @@ const oldWatchAnimes = [
     description="今まで視聴したアニメの一覧です。"
   >
     <ul class="space-y-3 mt-6">
-      {oldWatchAnimes.map((anime) => (
+      {OldWatchAnimes.map((anime) => (
         <li class="flex items-center justify-between gap-2 px-4 py-2 w-full border border-gray-300 dark:border-gray-700 rounded-md text-black dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
           <span>{anime}</span>
         </li>
