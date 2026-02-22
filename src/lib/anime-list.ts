@@ -322,4 +322,5 @@ export const OldWatchAnimes = [
   "幼馴染とはラブコメにならない",
   "うるわしの宵の月",
   "WORKING!!",
+  "這いよれ！ニャル子さん",
 ];
