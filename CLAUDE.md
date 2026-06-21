@@ -24,6 +24,7 @@ Astro v5 のファイルベースルーティング。`src/pages/` が URL に�
 - `index.astro` — プロフィール写真・SNSリンク・ページリンクを表示するホームページ
 - `blog.astro` / `blog/[slug].astro` — Content Collections によるブログ一覧・詳細
 - `watch-anime.astro` — 今期視聴アニメ一覧（データはページ内に `Place[]` として定義）
+- `old-watch-anime.astro` — 過去に視聴したアニメ・漫画一覧。`anime-list.ts` の `OldWatchAnimes` を表示し、クライアントサイド JS でインクリメンタル検索フォームを提供
 - `habitats.astro` — よく行く場所一覧（データはページ内に `Place[]` として定義）
 
 ### レイアウトとコンポーネントの階層
@@ -40,7 +41,7 @@ Layout.astro（HTML シェル・テーマ初期化・Google Fonts・ThemeToggle�
 ### データ管理
 
 - **ブログ記事**: `src/content/blog/` に Markdown。スキーマは `src/content/config.ts`（`title` 必須、`date` 任意、`draft` で非公開フィルタ）
-- **アニメリスト**: `src/lib/anime-list.ts`（過去視聴分の `string[]`）。今期分は `watch-anime.astro` 内に `Place[]` で定義
+- **アニメリスト**: `src/lib/anime-list.ts` が過去視聴分を `OldWatchAnimes`（`string[]`）として export → `old-watch-anime.astro` で使用。今期分は `watch-anime.astro` 内に `Place[]` で定義
 - **生息地データ**: `habitats.astro` 内に `Place[]` で直接定義
 
 ### テーマシステム
@@ -57,6 +58,17 @@ Layout.astro（HTML シェル・テーマ初期化・Google Fonts・ThemeToggle�
 - `global.css` で `@import "tailwindcss"` + `@config` でレガシー設定ファイルを参照
 - カスタム: `font-semibold` を 700 にマッピング（Noto Sans JP に 600 ウェイトがないため）
 - ブログ本文用の `.prose` スタイルは `global.css` に手書き（Tailwind Typography 未使用）
+
+### ビルド設定
+
+`astro.config.mjs` でパフォーマンス最適化を明示している。
+
+- `build.inlineStylesheets: "always"` — CSS を常に HTML へインライン化し、クリティカルパスから外す
+- `vite.build.cssMinify: "esbuild"` — CSS を esbuild で圧縮
+
+### React 統合について
+
+`@astrojs/react` が integration として設定され `react` / `react-dom` / `react-icons` が依存に入っているが、**現状どのコンポーネントでも React は未使用**（`.jsx`/`.tsx` も `client:` ディレクティブも存在しない）。アイコンや UI はすべて Astro コンポーネント内で完結している。React を使う前提で実装を進める前に、本当に必要か確認すること。
 
 ## 規約
 
