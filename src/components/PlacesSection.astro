@@ -31,6 +31,7 @@ const {
 } = Astro.props;
 
 const hasSubAreas = areas.length > 1 || Boolean(areas[0]?.title);
+const sectionCount = areas.reduce((n, area) => n + area.places.length, 0);
 
 const rowClass =
   'flex w-full items-center justify-between gap-3 rounded-xl px-3 py-2.5 text-foreground break-words transition-colors';
@@ -43,6 +44,8 @@ const rowClass =
     withDivider={withDivider}
     class="mb-4"
     id={sectionId}
+    count={hasSubAreas ? undefined : sectionCount}
+    countSuffix={countSuffix}
   />
 
   {areas.map((area) => {

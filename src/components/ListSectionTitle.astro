@@ -5,6 +5,8 @@ interface Props {
   withDivider?: boolean;
   class?: string;
   id?: string;
+  count?: number;
+  countSuffix?: string;
 }
 
 const {
@@ -13,6 +15,8 @@ const {
   withDivider = false,
   class: extraClass = '',
   id,
+  count,
+  countSuffix = '件',
 } = Astro.props;
 
 const Tag = level === 2 ? 'h2' : 'h3';
@@ -23,6 +27,13 @@ const baseClass =
 ---
 
 <div class={extraClass}>
-  <Tag id={id} class={baseClass}>{text}</Tag>
+  <Tag id={id} class={`${baseClass} flex items-baseline gap-2`}>
+    {text}
+    {count != null && (
+      <span class="rounded-full border border-border px-2 py-0.5 text-xs font-normal tracking-normal text-muted">
+        {count}{countSuffix}
+      </span>
+    )}
+  </Tag>
   {withDivider && <div class="mt-2 h-0.5 w-10 rounded-full bg-accent"></div>}
 </div>
