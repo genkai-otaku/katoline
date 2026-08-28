@@ -24,28 +24,27 @@ const posts = (
   <ListPageLayout
     title="ブログ"
     backHref="/"
-    backLabel="← ホームに戻る"
   >
     {posts.length === 0 ? (
-      <p class="text-sm text-gray-600 dark:text-gray-400">
+      <p class="text-sm text-muted">
         まだ記事がありません。
       </p>
     ) : (
-      <ul class="space-y-4 mt-6">
+      <ul class="grid gap-3">
         {posts.map((post: BlogEntry) => (
           <li>
             <a
               href={`/blog/${post.slug}/`}
-              class="block rounded-lg border border-gray-200 dark:border-gray-700 px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+              class="card group flex flex-col gap-2 p-5 text-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/50"
             >
-              <h2 class="text-base font-semibold text-black dark:text-gray-100">
-                {post.data.title}
-              </h2>
               {post.data.date && (
-                <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                <p class="text-xs tracking-wide text-muted">
                   {new Date(post.data.date).toLocaleDateString('ja-JP')}
                 </p>
               )}
+              <h2 class="text-lg font-bold leading-snug group-hover:text-accent">
+                {post.data.title}
+              </h2>
             </a>
           </li>
         ))}
@@ -53,5 +52,3 @@ const posts = (
     )}
   </ListPageLayout>
 </Layout>
-
-
