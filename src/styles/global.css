@@ -1,132 +1,256 @@
 @import "tailwindcss";
 @config "../../tailwind.config.mjs";
 
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+  --background: #0b0b0d;
+  --foreground: #f4f1ec;
+  --muted: #9a948c;
+  --subtle: #6f6a64;
+  --border: #2a2826;
+  --surface: #141316;
+  --surface-hover: rgba(255, 255, 255, 0.045);
+  --accent: #e8a07a;
+  --accent-fg: #0b0b0d;
+  --shadow: 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+  --background: #f4f0ea;
+  --foreground: #1a1714;
+  --muted: #6d655c;
+  --subtle: #8a8278;
+  --border: #e6dfd4;
+  --surface: #fffcf8;
+  --surface-hover: rgba(28, 22, 16, 0.04);
+  --accent: #c45c3a;
+  --accent-fg: #fffdf8;
+  --shadow: 0 1px 2px rgba(40, 30, 20, 0.04), 0 12px 32px rgba(40, 30, 20, 0.06);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-border: var(--border);
+  --color-surface: var(--surface);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+}
+
+@theme {
+  --font-sans: "Noto Sans JP", "Noto Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-padding-top: 4.5rem;
+}
+
 html,
 body {
   margin: 0;
   width: 100%;
   min-height: 100%;
-  font-family: "Noto Sans JP", "Noto Sans", sans-serif;
 }
 
 body {
-  background-color: #fff;
-  color: #000;
-  line-height: 1.6;
+  background-color: var(--background);
+  color: var(--foreground);
+  line-height: 1.7;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* ライトモード時のテキスト色 */
-html:not([data-theme="dark"]) body {
-  color: #000;
+::selection {
+  background: var(--accent);
+  color: var(--accent-fg);
 }
 
-/* ダークモード */
-[data-theme="dark"] body {
-  background-color: #1a1a1a;
-  color: #e5e5e5;
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
-/* Tailwindのダークモード設定 */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    color-scheme: dark;
-  }
+.theme-icon-sun {
+  display: block;
 }
 
-[data-theme="dark"] {
-  color-scheme: dark;
+.theme-icon-moon {
+  display: none;
 }
 
-/* ライトモード時のボタンホバー色（ほんの少しだけ灰色を足した白） */
-html:not([data-theme="dark"]) a[class*="border"]:hover {
-  background-color: #f8f8f8 !important;
+[data-theme="light"] .theme-icon-sun {
+  display: none;
 }
 
-/* ブログ本文用のMarkdownスタイル（Tailwind Typography 非依存の簡易版） */
+[data-theme="light"] .theme-icon-moon {
+  display: block;
+}
+
+.rainbow-line {
+  height: 1.5px;
+  background: linear-gradient(
+    90deg,
+    #7dd3fc 0%,
+    #a78bfa 28%,
+    #f9a8d4 52%,
+    #fdba74 78%,
+    #7dd3fc 100%
+  );
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
+  box-shadow: var(--shadow);
+}
+
+.avatar-glow {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 12px 40px -12px rgba(167, 139, 250, 0.45),
+    0 8px 28px -10px rgba(251, 146, 60, 0.35);
+}
+
 .prose {
-  max-width: 65ch;
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: var(--foreground);
+}
+
+.prose > :first-child {
+  margin-top: 0;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+  color: var(--foreground);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
 }
 
 .prose h1 {
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin: 1.5rem 0 1rem;
+  font-size: 1.6rem;
+  margin: 1.75rem 0 1rem;
 }
 
 .prose h2 {
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin: 1.5rem 0 0.75rem;
+  font-size: 1.3rem;
+  margin: 1.75rem 0 0.75rem;
 }
 
 .prose h3 {
-  font-size: 1.2rem;
-  font-weight: 600;
+  font-size: 1.12rem;
+  margin: 1.5rem 0 0.5rem;
+}
+
+.prose h4 {
+  font-size: 1.02rem;
   margin: 1.25rem 0 0.5rem;
 }
 
 .prose p {
-  margin: 0.75rem 0;
+  margin: 0.85rem 0;
+}
+
+.prose a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.prose a:hover {
+  opacity: 0.85;
+}
+
+.prose strong {
+  font-weight: 700;
 }
 
 .prose code {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: 0.9em;
-  background-color: rgba(148, 163, 184, 0.12);
-  padding: 0.15rem 0.35rem;
-  border-radius: 0.25rem;
+  font-size: 0.88em;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  padding: 0.12rem 0.35rem;
+  border-radius: 0.35rem;
 }
 
 .prose pre {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 0.85rem;
-  background-color: rgba(15, 23, 42, 0.95);
-  color: #e5e7eb;
-  padding: 0.9rem 1rem;
-  border-radius: 0.5rem;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--foreground);
+  padding: 0.95rem 1.1rem;
+  border-radius: 0.9rem;
   overflow-x: auto;
   margin: 1rem 0;
+  line-height: 1.6;
 }
 
 .prose pre code {
   background: transparent;
+  border: 0;
   padding: 0;
 }
 
 .prose ul {
   list-style-type: disc;
   padding-left: 1.5rem;
-  margin: 0.5rem 0 0.75rem;
+  margin: 0.5rem 0 0.85rem;
 }
 
-.prose ul li {
+.prose ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin: 0.5rem 0 0.85rem;
+}
+
+.prose li {
   margin: 0.25rem 0;
 }
 
-[data-theme="dark"] .prose code {
-  background-color: rgba(51, 65, 85, 0.7);
+.prose blockquote {
+  border-left: 2px solid var(--accent);
+  padding-left: 1rem;
+  margin: 1rem 0;
+  color: var(--muted);
 }
 
-[data-theme="dark"] .prose pre {
-  background-color: rgba(15, 23, 42, 1);
+.prose hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 1.75rem 0;
 }
 
-.prose a {
-  color: #2563eb; /* blue-600 */
-  text-decoration: underline;
-  text-underline-offset: 0.15em;
+.prose img {
+  max-width: 100%;
+  height: auto;
+  margin: 1rem 0;
+  border-radius: 0.9rem;
 }
 
-.prose a:hover {
-  color: #1d4ed8; /* blue-700 */
+.prose details {
+  margin: 1rem 0;
+  border: 1px solid var(--border);
+  background-color: var(--surface);
+  padding: 0.75rem 1rem;
+  border-radius: 0.9rem;
 }
 
-[data-theme="dark"] .prose a {
-  color: #60a5fa; /* blue-400 */
+.prose summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--foreground);
 }
 
-[data-theme="dark"] .prose a:hover {
-  color: #93c5fd; /* blue-300 */
+.prose details[open] summary {
+  margin-bottom: 0.5rem;
 }
-
