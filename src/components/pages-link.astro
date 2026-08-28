@@ -1,49 +1,67 @@
 ---
 interface PagesLinkItem {
   name: string;
+  hint: string;
   url: string;
 }
 
 const pagesLinks: PagesLinkItem[] = [
-{
+  {
     name: "ブログ",
+    hint: "テックと感想",
     url: "/blog",
   },
   {
     name: "生息地",
+    hint: "よくいる場所",
     url: "/habitats",
   },
   {
     name: "今期視聴アニメ",
+    hint: "今期のメモ",
     url: "/watch-anime",
   },
   {
-    name: "今まで視聴したアニメ、漫画一覧",
+    name: "視聴履歴",
+    hint: "今まで見たアニメ・漫画",
     url: "/old-watch-anime",
   },
   {
-    name: "個人的神アニメTop20",
+    name: "神アニメ Top20",
+    hint: "個人的ランキング",
     url: "https://animestore.docomo.ne.jp/animestore/CF/mylist_detail?shareListId=gLbhU4RDbdTIETuo",
   },
-  // {
-  //   name: "お問い合わせ",
-  //   url: "/contact",
-  // },
 ];
 ---
 
-<section class="mb-12 text-center">
-  <h2 class="text-xl font-semibold mb-4 text-black dark:text-gray-100">Pages</h2>
-  <nav class="flex flex-col gap-3 items-center" aria-label="ページナビゲーション">
-    {pagesLinks.map((link) => (
+<nav class="grid grid-cols-1 gap-3 sm:grid-cols-2" aria-label="ページナビゲーション">
+  {pagesLinks.map((link, index) => {
+    const external = /^https?:\/\//i.test(link.url);
+    const wide = pagesLinks.length % 2 === 1 && index === pagesLinks.length - 1;
+
+    return (
       <a
         href={link.url}
-        class="flex items-center justify-center gap-2 px-4 py-2 w-full max-w-xs border border-gray-300 dark:border-gray-700 rounded-md text-black dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+        class:list={[
+          'card group flex items-end justify-between gap-4 p-5 text-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/50',
+          wide && 'sm:col-span-2',
+        ]}
+        {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
       >
-        <span>{link.name}</span>
-        <span aria-hidden="true">→</span>
+        <span class="min-w-0">
+          <span class="block text-[0.7rem] tracking-[0.16em] text-muted">
+            {external ? 'EXTERNAL' : 'PAGE'}
+          </span>
+          <span class="mt-2 block text-base font-bold">{link.name}</span>
+          <span class="mt-1 block text-sm text-muted">{link.hint}</span>
+        </span>
+        <span
+          class="mb-0.5 shrink-0 text-subtle transition-colors group-hover:text-accent"
+          aria-hidden="true"
+        >
+          {external ? '↗' : '→'}
+        </span>
       </a>
-    ))}
-  </nav>
-</section>
-
+    );
+  })}
+</nav>

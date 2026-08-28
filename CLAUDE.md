@@ -8,6 +8,10 @@ Astro + Tailwind CSS + TypeScript で構築された日本語の個人プロフ�
 
 ## コマンド
 
+前提: Nix + direnv。`cd` すると `flake.nix` の devShell が有効になり、node / pnpm が入る（グローバルには入れない）。初回のみ `direnv allow`。
+
+- `pnpm install` — Node パッケージのインストール（`pnpm-lock.yaml` で管理）
+- `pnpm-workspace.yaml` の `allowBuilds` は pnpm 11 向け（esbuild / sharp の postinstall を許可）。モノレポではない
 - `pnpm dev` — 開発サーバー起動（http://localhost:4321）
 - `pnpm build` — 本番ビルド（`dist/` に出力）
 - `pnpm preview` — 本番ビルドのプレビュー
@@ -30,7 +34,8 @@ Astro v5 のファイルベースルーティング。`src/pages/` が URL に�
 ### レイアウトとコンポーネントの階層
 
 ```
-Layout.astro（HTML シェル・テーマ初期化・Google Fonts・ThemeToggle）
+Layout.astro（HTML シェル・テーマ初期化・Google Fonts・SiteHeader・フッター）
+├── SiteHeader.astro（サイト名 + ThemeToggle）
 └── ListPageLayout.astro（タイトル・戻るリンク・説明文の共通レイアウト）
     └── PlacesSection.astro（セクション見出し + リンクリスト。Place 型を export）
         └── ListSectionTitle.astro（見出しと区切り線）
@@ -47,16 +52,17 @@ Layout.astro（HTML シェル・テーマ初期化・Google Fonts・ThemeToggle�
 ### テーマシステム
 
 - `<html data-theme="dark"|"light">` 属性で制御、localStorage に保存
-- デフォルトはダークモード
+- デフォルトはダークモード（暖色の紙面トークン。色は `global.css` の CSS 変数）
 - FOUC 防止のため `Layout.astro` の `<head>` 内にインラインスクリプトでテーマを即時適用
 - Tailwind のダークモードは `tailwind.config.mjs` で `[data-theme="dark"]` セレクター戦略を使用
-- CSS のダークモードスタイルは `src/styles/global.css` に記述
+- フォントは Google Fonts の Noto Sans JP（400 / 700）。serif は使わない
 
 ### Tailwind CSS
 
 - **Tailwind v4** を使用（`@tailwindcss/vite` プラグイン経由）
 - `global.css` で `@import "tailwindcss"` + `@config` でレガシー設定ファイルを参照
-- カスタム: `font-semibold` を 700 にマッピング（Noto Sans JP に 600 ウェイトがないため）
+- `@theme inline` で `background` / `foreground` / `muted` / `subtle` / `border` / `surface` / `accent` をユーティリティ化
+- カスタム: `font-semibold` を 700 にマッピング（Noto Sans JP に 600 がないため）
 - ブログ本文用の `.prose` スタイルは `global.css` に手書き（Tailwind Typography 未使用）
 
 ### ビルド設定
@@ -74,4 +80,4 @@ Layout.astro（HTML シェル・テーマ初期化・Google Fonts・ThemeToggle�
 
 - **コミットメッセージ**: 日本語で記述
 - **TypeScript**: strict モード。コンポーネントは Props インターフェースを定義
-- **Place 型**: `PlacesSection.astro` から export される `{ label: string; href?: string }` 型がリスト系ページ全体で共有される
+- **Place 型**: `PlacesSection.astro` から export される `{ label: string; href?: string }` 型がリスト系ページ全体で共有される。空の `href` はリンクにしない。件数サフィックスは `countSuffix`（デフォルト `"件"`）

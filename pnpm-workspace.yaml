@@ -1,0 +1,4 @@
+# pnpm 11 の設定ファイル（モノレポではない。ビルドスクリプトの許可リスト）
+allowBuilds:
+  esbuild: true
+  sharp: true

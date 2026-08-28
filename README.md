@@ -12,6 +12,10 @@ Astro + TailwindCSS で構築されたシンプルでモダンなプロフィー
 
 ## 🚀 セットアップ
 
+前提: Nix + direnv。このディレクトリに `cd` すると `flake.nix` の devShell が有効になり、Node 22 と pnpm が入る（グローバルには入れない）。初回のみ `direnv allow` が必要。
+
+Node パッケージは従来どおり `pnpm-lock.yaml` で管理する。
+
 ### インストール
 
 ```bash
@@ -48,6 +52,7 @@ pnpm preview
 │   │   ├── ListSectionTitle.astro
 │   │   ├── pages-link.astro
 │   │   ├── PlacesSection.astro
+│   │   ├── SiteHeader.astro
 │   │   ├── sns-link.astro
 │   │   └── ThemeToggle.astro
 │   ├── content/              # Content Collections
@@ -55,16 +60,23 @@ pnpm preview
 │   │   └── config.ts         # コレクション設定
 │   ├── layouts/              # レイアウトコンポーネント
 │   │   └── Layout.astro
+│   ├── lib/
+│   │   └── anime-list.ts     # 過去視聴アニメ・漫画
 │   ├── pages/                # ページファイル
 │   │   ├── blog/             # ブログ関連ページ
 │   │   │   └── [slug].astro # ブログ記事詳細ページ
 │   │   ├── blog.astro        # ブログ一覧ページ
 │   │   ├── habitats.astro    # よく行く場所ページ
 │   │   ├── index.astro       # ホームページ
+│   │   ├── old-watch-anime.astro
 │   │   └── watch-anime.astro # 今期視聴アニメページ
 │   └── styles/               # グローバルスタイル
 │       └── global.css
 ├── astro.config.mjs          # Astro設定ファイル
+├── flake.nix                 # Nix devShell（Node 22 + pnpm）
+├── flake.lock
+├── pnpm-workspace.yaml       # pnpm 11 のビルド許可（esbuild / sharp）
+├── .envrc                    # direnv: use flake
 ├── tailwind.config.mjs       # TailwindCSS設定ファイル
 ├── tsconfig.json             # TypeScript設定ファイル
 └── package.json

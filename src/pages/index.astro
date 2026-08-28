@@ -8,31 +8,37 @@ import PagesLinks from '../components/pages-link.astro';
   title="@tonosaki"
   description="@tonosakiの個人サイトです。SNSリンクやよく行く場所、今期視聴アニメなどの情報をまとめています。"
 >
-  <main class="min-h-screen pt-16 pb-2 px-4">
-    <div class="max-w-2xl mx-auto">
-      <!-- プロフィール写真 -->
-      <div class="flex justify-center mb-6">
-        <div class="w-70 h-70 rounded-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center overflow-hidden">
-          <img 
-            src="/icon-head.webp" 
-            alt="Tonosakiのプロフィール写真" 
-            class="w-full h-full object-cover"
-            fetchpriority="high"
-            loading="eager"
-            width="280"
-            height="280"
-            decoding="async"
-            onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\'text-gray-600 dark:text-gray-400 text-4xl\'>🐱</span>'"
-          />
+  <main class="px-4 pt-10 pb-16 sm:pt-14">
+    <div class="mx-auto max-w-3xl">
+      <section class="card relative mb-8 overflow-hidden p-6 sm:p-8">
+        <div
+          class="pointer-events-none absolute -right-20 -top-24 h-56 w-56 rounded-full opacity-70"
+          style="background: radial-gradient(circle, rgba(167,139,250,0.28) 0%, rgba(251,146,60,0.12) 42%, transparent 70%);"
+          aria-hidden="true"
+        ></div>
+        <div class="relative flex flex-col items-center gap-6 sm:flex-row sm:items-center sm:gap-8">
+          <div class="avatar-glow h-28 w-28 shrink-0 overflow-hidden rounded-full bg-surface sm:h-32 sm:w-32">
+            <img 
+              src="/icon-head.webp" 
+              alt="Tonosakiのプロフィール写真" 
+              class="h-full w-full object-cover"
+              fetchpriority="high"
+              loading="eager"
+              width="128"
+              height="128"
+              decoding="async"
+              onerror={"this.style.display='none'; this.parentElement.innerHTML='<span class=\"flex h-full items-center justify-center text-muted text-4xl\">🐱</span>'"}
+            />
+          </div>
+          <div class="text-center sm:text-left">
+            <p class="mb-1 text-[0.7rem] tracking-[0.2em] text-muted">PERSONAL SITE</p>
+            <h1 class="text-3xl font-bold tracking-wide text-foreground sm:text-4xl">@tonosaki</h1>
+            <p class="mt-2 mb-5 text-sm text-muted">アニメと漫画と、あとは飯。</p>
+            <SnsLinks />
+          </div>
         </div>
-      </div>
+      </section>
 
-      <h1 class="text-3xl font-bold text-center mb-8 text-black dark:text-gray-100">@tonosaki</h1>
-
-      <!-- Links セクション -->
-      <SnsLinks />
-
-      <!-- Pages セクション -->
       <PagesLinks />
     </div>
   </main>

@@ -52,17 +52,16 @@ const thisSeasonAnimes: Place[] = [
   <ListPageLayout
     title="今期視聴アニメ"
     backHref="/"
-    backLabel="← ホームに戻る"
     description="今期視聴しているアニメのメモです。タイトルをクリックすると各作品の公式サイトなどに飛べるようにしておきます。"
   >
     <PlacesSection
       sectionId="this-season-anime-heading"
       title="今期視聴アニメ一覧"
-      class="mt-10 mb-10"
-      areas={
-      [
+      class="mb-4"
+      countSuffix="作品"
+      areas={[
         {
-          id: '2026-winter-anime',
+          id: '2026-summer-anime',
           title: '2026年夏アニメ',
           places: thisSeasonAnimes,
         },
@@ -70,5 +69,3 @@ const thisSeasonAnimes: Place[] = [
     />
   </ListPageLayout>
 </Layout>
-
-
