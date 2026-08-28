@@ -18,6 +18,7 @@ interface Props {
   areas: Area[];
   class?: string;
   withDivider?: boolean;
+  countSuffix?: string;
 }
 
 const {
@@ -26,10 +27,13 @@ const {
   areas,
   class: extraClass = '',
   withDivider = true,
-} = Astro.props as Props;
+  countSuffix = '件',
+} = Astro.props;
 
-// サブエリア（h3見出し）を表示するかどうか
 const hasSubAreas = areas.length > 1 || Boolean(areas[0]?.title);
+
+const rowClass =
+  'flex w-full items-center justify-between gap-3 rounded-xl px-3 py-2.5 text-foreground break-words transition-colors';
 ---
 
 <section aria-labelledby={sectionId} class={extraClass}>
@@ -41,49 +45,58 @@ const hasSubAreas = areas.length > 1 || Boolean(areas[0]?.title);
     id={sectionId}
   />
 
-  {hasSubAreas ? (
-    areas.map((area) => (
+  {areas.map((area) => {
+    const list = (
+      <ul class="card divide-y divide-border p-2">
+        {area.places.map((place) => {
+          const href = place.href?.trim() ?? '';
+          const linked = href.length > 0;
+          const external = /^https?:\/\//i.test(href);
+
+          return (
+            <li>
+              {linked ? (
+                <a
+                  href={href}
+                  class:list={[rowClass, 'hover:bg-[var(--surface-hover)] hover:text-accent']}
+                  {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                >
+                  <span class="min-w-0 break-words">{place.label}</span>
+                  {external && (
+                    <span class="shrink-0 text-sm text-subtle" aria-hidden="true">↗</span>
+                  )}
+                </a>
+              ) : (
+                <div class={rowClass}>
+                  <span class="min-w-0 break-words">{place.label}</span>
+                </div>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    );
+
+    if (!hasSubAreas || !area.title) {
+      return list;
+    }
+
+    return (
       <section
         aria-labelledby={`area-${area.id}-heading`}
-        class="mb-8 last:mb-0"
+        class="mb-6 last:mb-0"
       >
-        {area.title && (
-          <h3
-            id={`area-${area.id}-heading`}
-            class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2"
-          >
-            {area.title}
-            <span class="text-sm font-normal text-gray-500 dark:text-gray-400 ml-2">{area.places.length}作品</span>
-          </h3>
-        )}
-        <ul class="space-y-3">
-          {area.places.map((place) => (
-            <li>
-              <a
-                href={place.href ?? '#'}
-                class="flex items-center justify-between gap-2 px-4 py-2 w-full border border-gray-300 dark:border-gray-700 rounded-md text-black dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
-              >
-                <span>{place.label}</span>
-                <span class="text-gray-400 text-sm">↗</span>
-              </a>
-            </li>
-          ))}
-        </ul>
+        <h3
+          id={`area-${area.id}-heading`}
+          class="mb-2 flex items-baseline gap-2 px-1 text-sm font-bold text-foreground"
+        >
+          {area.title}
+          <span class="rounded-full border border-border px-2 py-0.5 text-xs font-normal text-muted">
+            {area.places.length}{countSuffix}
+          </span>
+        </h3>
+        {list}
       </section>
-    ))
-  ) : (
-    <ul class="space-y-3">
-      {areas[0].places.map((place) => (
-        <li>
-          <a
-            href={place.href ?? '#'}
-            class="flex items-center justify-between gap-2 px-4 py-2 w-full border border-gray-300 dark:border-gray-700 rounded-md text-black dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
-          >
-            <span>{place.label}</span>
-            <span class="text-gray-400 text-sm">↗</span>
-          </a>
-        </li>
-      ))}
-    </ul>
-  )}
+    );
+  })}
 </section>
