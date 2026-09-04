@@ -3,9 +3,17 @@ import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
+import { remarkCodeFilename } from "./src/lib/remark-code-filename.mjs";
+import { transformerCodeFilename } from "./src/lib/shiki-filename-transformer.mjs";
 
 // https://astro.build/config
 export default defineConfig({
+  markdown: {
+    remarkPlugins: [remarkCodeFilename],
+    shikiConfig: {
+      transformers: [transformerCodeFilename()],
+    },
+  },
   integrations: [mdx(), react()],
   build: {
     // CSSを常にインライン化してクリティカルパスから除外

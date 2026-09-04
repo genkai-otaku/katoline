@@ -195,6 +195,15 @@ body {
   line-height: 1.6;
 }
 
+.prose pre[data-filename]::before {
+  content: attr(data-filename);
+  display: block;
+  margin: -0.35rem 0 0.75rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
 .prose pre code {
   background: transparent;
   border: 0;
