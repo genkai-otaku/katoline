@@ -11,9 +11,9 @@ const posts = (
     (entry: BlogEntry) => !entry.data.draft,
   )
 ).sort((a: BlogEntry, b: BlogEntry) => {
-  const ad = a.data.date ? new Date(a.data.date) : new Date(0);
-  const bd = b.data.date ? new Date(b.data.date) : new Date(0);
-  return bd.getTime() - ad.getTime();
+  const ad = a.data.date?.getTime() ?? 0;
+  const bd = b.data.date?.getTime() ?? 0;
+  return bd - ad;
 });
 ---
 
@@ -34,12 +34,12 @@ const posts = (
         {posts.map((post: BlogEntry) => (
           <li>
             <a
-              href={`/blog/${post.slug}/`}
+              href={`/blog/${post.id}/`}
               class="card group flex flex-col gap-2 p-5 text-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/50"
             >
               {post.data.date && (
                 <p class="text-xs tracking-wide text-muted">
-                  {new Date(post.data.date).toLocaleDateString('ja-JP')}
+                  {post.data.date.toLocaleDateString('ja-JP')}
                 </p>
               )}
               <h2 class="text-lg font-bold leading-snug group-hover:text-accent">
