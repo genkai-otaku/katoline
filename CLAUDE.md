@@ -26,7 +26,7 @@ Astro + Tailwind CSS + TypeScript で構築された日本語の個人プロフ�
 Astro v5 のファイルベースルーティング。`src/pages/` が URL に直接対応する。
 
 - `index.astro` — プロフィール写真・SNSリンク・ページリンクを表示するホームページ
-- `blog.astro` / `blog/[slug].astro` — Content Collections によるブログ一覧・詳細
+- `blog.astro` / `blog/[slug].astro` — Content Collections（MDX）によるブログ一覧・詳細
 - `watch-anime.astro` — 今期視聴アニメ一覧（データはページ内に `Place[]` として定義）
 - `old-watch-anime.astro` — 過去に視聴したアニメ・漫画一覧。`anime-list.ts` の `OldWatchAnimes` を表示し、クライアントサイド JS でインクリメンタル検索フォームを提供
 - `habitats.astro` — よく行く場所一覧（データはページ内に `Place[]` として定義）
@@ -45,7 +45,9 @@ Layout.astro（HTML シェル・テーマ初期化・Google Fonts・SiteHeader�
 
 ### データ管理
 
-- **ブログ記事**: `src/content/blog/` に Markdown。スキーマは `src/content/config.ts`（`title` 必須、`date` 任意、`draft` で非公開フィルタ）
+- **ブログ記事**: `src/content/blog/` に MDX（`.mdx`）。スキーマは `src/content.config.ts`（`title` 必須、`date` 任意、`draft` で非公開フィルタ）
+- **MDX コンポーネント**: `src/components/mdx/` を `blog/[slug].astro` の `<Content components={...} />` に渡す。記事側で import せず `<Details summary="...">` のように使える。新しいブログ用コンポーネントも同じ場所に追加する
+- **コードフェンス**: `json:package.json` のように `lang:filename` と書くと、Shiki の言語とファイル名表示に分解される（`src/lib/remark-code-filename.mjs`）
 - **アニメリスト**: `src/lib/anime-list.ts` が過去視聴分を `OldWatchAnimes`（`string[]`）として export → `old-watch-anime.astro` で使用。今期分は `watch-anime.astro` 内に `Place[]` で定義
 - **生息地データ**: `habitats.astro` 内に `Place[]` で直接定義
 

@@ -1,7 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import ListPageLayout from '../../components/ListPageLayout.astro';
-import { getCollection, type CollectionEntry } from 'astro:content';
+import Details from '../../components/mdx/Details.astro';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
 
 type BlogEntry = CollectionEntry<'blog'>;
 
@@ -12,23 +13,22 @@ export async function getStaticPaths() {
   );
 
   return posts.map((post: BlogEntry) => ({
-    params: { slug: post.slug },
+    params: { slug: post.id },
     props: { post },
   }));
 }
 
-const { post } = Astro.props as { post: BlogEntry };
-const { title, date } = post.data as {
-  title: string;
-  date?: string | Date;
-};
+interface Props {
+  post: BlogEntry;
+}
 
+const { post } = Astro.props;
+const { title, date } = post.data;
 const pageTitle = `${title} - @tonosaki`;
-
-const { Content } = await post.render();
+const { Content } = await render(post);
 ---
 
-<Layout title={pageTitle} description={post.data.title}>
+<Layout title={pageTitle} description={title}>
   <ListPageLayout
     title={title}
     backHref="/blog"
@@ -36,12 +36,12 @@ const { Content } = await post.render();
   >
     {date && (
       <p slot="meta" class="mt-2 text-sm text-muted">
-        {new Date(date).toLocaleDateString('ja-JP')}
+        {date.toLocaleDateString('ja-JP')}
       </p>
     )}
 
     <article class="card prose max-w-none p-6 sm:p-8">
-      <Content />
+      <Content components={{ Details }} />
     </article>
   </ListPageLayout>
 </Layout>
